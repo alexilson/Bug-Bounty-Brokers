@@ -14,12 +14,20 @@ const seedDatabase = async () => {
     returning: true,
   });
 
+  const repos = await Repos.bulkCreate(reposData, {
+    individualHooks: true,
+    returning: true
+  });
+
+  const followedRepos = await FollowedRepos.bulkCreate(followedReposData, {
+    individualHooks: true,
+    returning: true
+  });
+
   const bugs = await Bugs.bulkCreate(bugsData, {
     individualHooks: true,
     returning: true
-  })
-
-
+  });
 
   process.exit(0);
 };
