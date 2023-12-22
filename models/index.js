@@ -1,13 +1,25 @@
-const User = require('./User');
-const Project = require('./Project');
+const Bugs = require('./Bugs');
+const FollowedRepos = require('./FollowedRepos');
+const Repos = require('./Repos');
+const Users = require('./Users');
 
-User.hasMany(Project, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
+// Each bug has one repo
+Bugs.belongsTo(Repos, {
+  foreignKey: 'repo_id'
 });
 
-Project.belongsTo(User, {
-  foreignKey: 'user_id'
+// 
+Repos.hasMany(Bugs, {
+  foreignKey: 'repo_id'
 });
 
-module.exports = { User, Project };
+// FollowedRepos belongs to Users
+Repos.belongsToMany(Users, {
+  through: FollowedRepos
+});
+
+Users.belongsToMany(Repos, {
+  through: FollowedRepos
+});
+
+module.exports = { Bugs, FollowedRepos, Repos, Users };
