@@ -1,0 +1,1 @@
+Buggy Bandits Presents the Bug Bounty Brokers, a Bug Bounty Board with GitHub Integration
