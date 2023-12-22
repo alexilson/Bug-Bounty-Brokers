@@ -1,10 +1,34 @@
 [
     {
-        "repo_id": "1",
+        "repo_id": "2",
+        "issue_number": "3",
+        "issue_state": "open",
+        "issue_title": "Configure Models",
+        "issue_body": "",
+        "issue_url": "https://github.com/alexilson/Bug-Bounty-Brokers/issues/3"
+    },
+    {
+        "repo_id": "2",
         "issue_number": "4",
         "issue_state": "open",
         "issue_title": "Configure Seeds",
         "issue_body": "",
         "issue_url": "https://github.com/alexilson/Bug-Bounty-Brokers/issues/4"
+    },
+    {
+        "repo_id": "1",
+        "issue_number": "17",
+        "issue_state": "closed",
+        "issue_title": "Unable to load assets",
+        "issue_body": "Users are not able to load images due to the assets not loading.",
+        "issue_url": "https://github.com/test/test/issues/17"
+    },
+    {
+        "repo_id": "3",
+        "issue_number": "54",
+        "issue_state": "open",
+        "issue_title": "请问想要部署自己的模型",
+        "issue_body": "应该还需要你们predictor训练的代码吧？还有ft转换relu的",
+        "issue_url": "https://github.com/SJTU-IPADS/PowerInfer/issues/54"
     }
 ]
