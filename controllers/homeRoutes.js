@@ -1,5 +1,6 @@
 const router = require('express').Router();
 
+
 // view home page with 
 router.get('/', (req, res) => {
   res.render('splash', {

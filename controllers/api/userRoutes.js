@@ -1,27 +1,38 @@
 // Leaving this in the repo for now as example code
-
 const router = require('express').Router();
 const { Users } = require('../../models');
+const withAuth = require('../../utils/auth');
 
-router.post('/', async (req, res) => {
-  try {
-    const userData = await Users.create(req.body);
-
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-
-      res.status(200).json(userData);
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
+// view home page with 
+router.get('/dashboard', withAuth, (req, res) => {
+  res.render('dashboard', {
+    title: 'USER DASHBOARD',
+    style: 'dashboard.css'
+  });
 });
+
+// // crate new user
+// router.post('/', async (req, res) => {
+//   try {
+//     const userData = await Users.create(req.body);
+
+//     req.session.save(() => {
+//       req.session.user_id = userData.id;
+//       req.session.logged_in = true;
+
+//       res.status(200).json(userData);
+//     });
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
 
 router.post('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
+    const userData = await Users.findOne({ where: { email: req.body.email } });
 
+    console.log('USER DATA: ' + userData)
+    
     if (!userData) {
       res
         .status(400)
