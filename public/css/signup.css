@@ -1,0 +1,31 @@
+body {
+    background-color: black;
+    color: whitesmoke;
+}
+
+.container {
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.form input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+}
+
+.password-toggle {
+    cursor: pointer;
+}

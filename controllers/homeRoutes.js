@@ -2,10 +2,10 @@ const router = require('express').Router();
 
 // view home page with 
 router.get('/', (req, res) => {
-  const pageTitle = {
-    title: "Bug Bounty Brokers"
-  }
-  res.render('splash', pageTitle)
+  res.render('splash', {
+    title: 'Bug Bounty Brokers',
+    style: 'splash.css'
+  });
 });
 
 router.get('/login', (req, res) => {
@@ -13,10 +13,10 @@ router.get('/login', (req, res) => {
     res.redirect('/');
     return;
   }
-  const pageTitle = {
-    title: "User Login"
-  }
-  res.render('login', pageTitle);
+  res.render('login', {
+    title: 'User Login',
+    style: 'login.css'
+  });
 });
 
 router.get('/signup', (req, res) => {
@@ -24,10 +24,10 @@ router.get('/signup', (req, res) => {
     res.redirect('/');
     return;
   }
-  const pageTitle = {
-    title: "Sign Up for BBB"
-  }
-  res.render('signup');
+  res.render('signup', {
+    title: 'Sign Up for BBB',
+    style: 'signup.css'
+  });
 });
 
 module.exports = router;
