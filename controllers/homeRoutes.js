@@ -1,8 +1,11 @@
 const router = require('express').Router();
 
-
 // view home page with 
 router.get('/', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/api/users/dashboard');
+    return;
+  }
   res.render('splash', {
     title: 'Bug Bounty Brokers',
     style: 'splash.css'

@@ -3,11 +3,12 @@ const router = require('express').Router();
 const { Users } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// view home page with 
+// view user dashboard page with 
 router.get('/dashboard', withAuth, (req, res) => {
   res.render('dashboard', {
     title: 'USER DASHBOARD',
-    style: 'dashboard.css'
+    style: 'dashboard.css',
+    logged_in: req.session.logged_in
   });
 });
 
