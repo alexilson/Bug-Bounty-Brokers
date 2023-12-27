@@ -1,16 +1,7 @@
 // Leaving this in the repo for now as example code
 const router = require('express').Router();
 const { Users } = require('../../models');
-const withAuth = require('../../utils/auth');
 
-// view user dashboard page with 
-router.get('/dashboard', withAuth, (req, res) => {
-  res.render('dashboard', {
-    title: 'USER DASHBOARD',
-    style: 'dashboard.css',
-    logged_in: req.session.logged_in
-  });
-});
 
 // // crate new user
 // router.post('/', async (req, res) => {
@@ -28,12 +19,11 @@ router.get('/dashboard', withAuth, (req, res) => {
 //   }
 // });
 
+// login to check db if user and password match
 router.post('/login', async (req, res) => {
   try {
     const userData = await Users.findOne({ where: { email: req.body.email } });
 
-    console.log('USER DATA: ' + userData)
-    
     if (!userData) {
       res
         .status(400)
@@ -62,6 +52,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// logout and destroy session
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {

@@ -1,8 +1,6 @@
 body {
+    font-family: 'JetBrains Mono', monospace;
     background-color: black;
     color: whitesmoke;
 }
 
-.container {
-    margin-top: 5rem;
-}

@@ -52,6 +52,7 @@ If you followed tutorials, include links to those here as well.
 
 Handlebars CSS
 CITE: https://www.youtube.com/watch?v=o4njTeKjGWQ
+CITE: https://fonts.google.com/specimen/JetBrains+Mono?preview.text=Bug%20Bounty%20Brokers&classification=Monospace 
 
 
 ## License
