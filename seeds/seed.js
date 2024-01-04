@@ -1,10 +1,11 @@
 const sequelize = require('../config/connection');
-const { Users, FollowedRepos, Repos, Bugs } = require('../models');
+const { Users, FollowedRepos, Repos, Bugs, Bounties } = require('../models');
 
 const userData = require('./usersData.json');
 const bugsData = require('./bugsData.json');
 const followedReposData = require('./followedReposData.json');
 const reposData = require('./reposData.json');
+const bountiesData = require('./bountiesData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -25,6 +26,11 @@ const seedDatabase = async () => {
   });
 
   const bugs = await Bugs.bulkCreate(bugsData, {
+    individualHooks: true,
+    returning: true
+  });
+
+  const bounties = await Bounties.bulkCreate(bountiesData, {
     individualHooks: true,
     returning: true
   });
