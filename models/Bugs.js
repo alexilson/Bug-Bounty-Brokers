@@ -38,7 +38,7 @@ Bugs.init(
     bounty_weight: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: 0
+        defaultValue: 1
     }
   },
   {
