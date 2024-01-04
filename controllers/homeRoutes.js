@@ -36,7 +36,34 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
+// most wanted top bounties
+router.get('/feed', withAuth, (req, res) => {
+  res.render('feed', {
+    title: 'Followed Repos',
+    style: 'dashboard.css',
+    logged_in: req.session.logged_in
+  });
+});
+
 // github repo search page
+router.get('/search', withAuth, (req, res) => {
+  res.render('search', {
+    title: 'Search Repos',
+    style: 'dashboard.css',
+    logged_in: req.session.logged_in
+  });
+});
+
+// github issues after repo search
+router.get('/issues', withAuth, (req, res) => {
+  res.render('issues', {
+    title: 'Repo Issues',
+    style: 'dashboard.css',
+    logged_in: req.session.logged_in
+  });
+});
+
+// most wanted top bounties
 router.get('/bugs', withAuth, (req, res) => {
   res.render('bugs', {
     title: 'Search for Bugs',
