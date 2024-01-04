@@ -1,0 +1,27 @@
+[
+    {
+        "bug_id": 3,
+        "user_id": 3,
+        "bounty_amount": 5
+    },
+    {
+        "bug_id": 2,
+        "user_id": 2,
+        "bounty_amount": 123
+    },
+    {
+        "bug_id": 3,
+        "user_id": 1,
+        "bounty_amount": 5
+    },
+    {
+        "bug_id": 4,
+        "user_id": 3,
+        "bounty_amount": 5555
+    },
+    {
+        "bug_id": 1,
+        "user_id": 3,
+        "bounty_amount": 5
+    }
+]
