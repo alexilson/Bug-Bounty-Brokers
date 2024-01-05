@@ -1,5 +1,11 @@
 const router = require('express').Router();
 const { Users, Bounties, Bugs, FollowedRepos, Repos } = require('../models');
+const { Octokit } = require("@octokit/core");
+
+const octokit = new Octokit({ 
+  auth: process.env.API_KEY
+});
+
 
 const withAuth = require('../utils/auth');
 
@@ -44,7 +50,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
-// most wanted top bounties
+// followed repos
 router.get('/feed', withAuth, async (req, res) => {
   try {
     // get user data
@@ -72,12 +78,36 @@ router.get('/feed', withAuth, async (req, res) => {
 });
 
 // github repo search page
-router.get('/search', withAuth, (req, res) => {
-  res.render('search', {
-    title: 'Search Repos',
-    style: 'dashboard.css',
-    logged_in: req.session.logged_in
-  });
+router.get('/search', withAuth, async (req, res) => {
+  const query = req.query.query;
+
+  if(query){
+    try {
+      const response = await octokit.request("GET /search/repositories", {
+        q: query,
+        page: 1, // Replace with the desired page number
+        per_page: 10, // Replace with the desired number of results per page
+        sort: "stars", // Replace with your preferred sorting criteria
+        order: "desc" // Replace with "asc" for ascending order or "desc" for descending order
+      });
+  
+      // Extract the list of repositories from the response
+      const repositories = response.data.items;
+      res.render('search', {
+        repositories,
+        title: 'Search Repos',
+        style: 'dashboard.css',
+        logged_in: req.session.logged_in
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  } else {
+    res.render('search', {
+      title: 'Search Repos',
+      logged_in: req.session.logged_in
+    });
+  }
 });
 
 // github issues after repo search
