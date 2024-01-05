@@ -15,18 +15,12 @@
              <!-- Main Content -->
     <div class="col-md-9">
       <div class="card-container">
+        {{#each bounties as |bounty|}}
         <div class="card mb-3">
-          <h2>My Bounty 1</h2>
-          <!-- Add content for Bounty 1 here -->
+          <h2>{{bounty.bug.issue_title}}</h2>
+          <p>{{bounty.bug.issue_url}}</p>
         </div>
-        <div class="card mb-3">
-          <h2>My Bounty 2</h2>
-          <!-- Add content for Bounty 2 here -->
-        </div>
-        <div class="card mb-3">
-          <h2>My Bounty 3</h2>
-          <!-- Add content for Bounty 3 here -->
-        </div>
+        {{/each}}
       </div>
     </div>
   </div>
