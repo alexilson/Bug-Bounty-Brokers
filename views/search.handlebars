@@ -1,3 +1,19 @@
+<style>
+    body {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: black;
+    color: whitesmoke;
+}
+
+.container {
+    margin-top: 5rem;
+}
+
+.card {
+    color: black;
+}
+
+</style>
 <body>
     <div class="container mt-4">
         <h1 class="text-center mb-4">Search Page</h1>
@@ -14,40 +30,28 @@
 
             <!-- Main Content -->
             <div class="col-md-9">
-                <!-- Search Bar -->
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">Search</button>
+                <!-- Search Bar Form -->
+                <form action="/search/" method="GET">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2" name="query">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </div>
                     </div>
-                </div>
+                </form>
 
                 <!-- Search Results (Cards) -->
-                <!-- Result Card 1 -->
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Repo 1 <a href="#" class="btn btn-primary btn-sm ml-2">Follow</a></h5>
-                        <p class="card-text">Description of result 1.</p>
-                        <a href="/issues" class="btn btn-primary">See Issues</a>
+                <div class="result-container">
+                    <!-- Result Card 1 -->
+                    {{#each repositories as |repository|}}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">{{repository.full_name}}<a href="#" class="btn btn-primary btn-sm ml-2">Follow</a></h5>
+                            <p class="card-text">{{repository.description}}</p>
+                            <a href="/issues" class="btn btn-primary">See Issues</a>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Result Card 2 -->
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Repo 2 <a href="#" class="btn btn-primary btn-sm ml-2">Follow</a></h5>
-                        <p class="card-text">Description of result 2.</p>
-                        <a href="/issues" class="btn btn-primary">See Issues</a>
-                    </div>
-                </div>
-
-                <!-- Result Card 3 -->
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Repo 3 <a href="#" class="btn btn-primary btn-sm ml-2">Follow</a></h5>
-                        <p class="card-text">Description of result 3.</p>
-                        <a href="/issues" class="btn btn-primary">Set Bounty</a>
-                    </div>
+                    {{/each}}
                 </div>
             </div>
         </div>
