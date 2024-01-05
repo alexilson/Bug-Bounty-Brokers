@@ -16,27 +16,15 @@
             <div class="col-md-9">
                 <!-- Cards for Issues -->
                 <div class="card-container">
+                    {{#each repos as |repo|}}
                     <div class="card mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">Followed Repo 1</h5>
-                            <p class="card-text">Description of Followed Repo 1.</p>
+                            <h5 class="card-title">{{repo.repo_name}}</h5>
+                            <p class="card-text">{{repo.repo_url}}</p>
                             <a href="/issues" class="btn btn-primary">See Issues</a>
                         </div>
                     </div>
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Followed Repo 2</h5>
-                            <p class="card-text">Description of Followed Repo 2.</p>
-                            <a href="/issues" class="btn btn-primary">See Issues</a>
-                        </div>
-                    </div>
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Followed Repo 3</h5>
-                            <p class="card-text">Description of Followed Repo 3.</p>
-                            <a href="/issues" class="btn btn-primary">See Issues</a>
-                        </div>
-                    </div>
+                    {{/each}}
                 </div>
             </div>
         </div>

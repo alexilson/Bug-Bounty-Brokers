@@ -1,6 +1,6 @@
 // Leaving this in the repo for now as example code
 const router = require('express').Router();
-const { Users } = require('../../models');
+const { Users, Bounties } = require('../../models');
 
 
 // // crate new user

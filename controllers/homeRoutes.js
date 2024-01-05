@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Users } = require('../models');
+const { Users, Bounties, Bugs, FollowedRepos, Repos } = require('../models');
+
 const withAuth = require('../utils/auth');
 
 // view home splash page
@@ -16,17 +17,24 @@ router.get('/', (req, res) => {
 
 // view user dashboard page with user data
 router.get('/dashboard', withAuth, async (req, res) => {
-  console.log('ID OF USER: ' + req.session.user_id)
   try {
+    // get user data
     const user = await Users.findByPk(req.session.user_id);
-    console.log("USER: " + user);
-
     const userData = user.get({ plain: true });
 
-    console.log("USER DATA: " + userData);
+    //get bounties
+    const bountiesData =await Bounties.findAll({
+      where: {user_id: req.session.user_id},
+      include: [{
+        model: Bugs,
+        attributes: ['issue_title', 'issue_url']
+      }]
+    })
+    const bounties = bountiesData.map((bounty) => bounty.get({ plain: true}))
 
     res.render('dashboard', {
       userData,
+      bounties,
       title: `${userData.username}'s Dashboard`,
       style: 'dashboard.css',
       logged_in: req.session.logged_in
@@ -37,12 +45,30 @@ router.get('/dashboard', withAuth, async (req, res) => {
 });
 
 // most wanted top bounties
-router.get('/feed', withAuth, (req, res) => {
-  res.render('feed', {
-    title: 'Followed Repos',
-    style: 'dashboard.css',
-    logged_in: req.session.logged_in
-  });
+router.get('/feed', withAuth, async (req, res) => {
+  try {
+    // get user data
+    const user = await Users.findByPk(req.session.user_id, {
+      include: [{
+        model: Repos,
+        through: FollowedRepos
+      }]
+    });
+    
+    const userData = user.get({ plain: true });
+    console.log(userData);
+
+    res.render('feed', {
+      userData,
+      repos: userData.repos,
+      title: 'Followed Repos',
+      style: 'dashboard.css',
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+  
 });
 
 // github repo search page
