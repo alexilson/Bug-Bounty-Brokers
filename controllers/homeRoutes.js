@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Users, Bounties, Bugs, FollowedRepos, Repos } = require('../models');
+const sequelize = require('../config/connection');
 
 const withAuth = require('../utils/auth');
 
@@ -90,12 +91,51 @@ router.get('/issues', withAuth, (req, res) => {
 });
 
 // most wanted top bounties
-router.get('/bugs', withAuth, (req, res) => {
-  res.render('bugs', {
-    title: 'Search for Bugs',
-    style: 'dashboard.css',
-    logged_in: req.session.logged_in
-  });
+router.get('/bugs', withAuth, async (req, res) => {
+
+  try {
+
+    // const bugs = await Bugs.findAll({
+    //   attributes: ['issue_title', 'issue_url', 'bounties.id'],
+    //   include: [
+    //     { model: Bounties }
+    //   ]
+    // });
+
+    const bugs = await Bugs.findAll({
+      include: [{ 
+        model: Bounties,
+        attributes: [],
+        as: 'bounties'
+       }],
+      attributes: [
+        'issue_title',
+        [sequelize.fn('SUM', sequelize.col('bounties.bounty_amount')), 'bountyTotal']
+      ],
+      group: ['bugs.id'],
+      order: [['bountyTotal', 'DESC']],
+      limit: 2,
+      subQuery: false
+    })
+
+    console.log(bugs);
+
+    console.log("=======CONVERTING=======");
+
+    const bounties = bugs.map((bug) => bug.get({ plain: true }));
+
+    console.log(bounties)
+
+    res.render('bugs', {
+      title: 'Search for Bugs',
+      style: 'dashboard.css',
+      logged_in: req.session.logged_in
+    });
+
+  } catch (err) {
+    res.status(500).json(err);
+    return;
+  }
 });
 
 // view login page
