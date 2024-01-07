@@ -25,9 +25,9 @@ router.post('/', async (req, res) => {
         // Loop through the repositories and display their information
         repositories.forEach(repository => {
           returnedRepos.push({
-            name: repository.full_name,
+            name: repository.name,
+            owner: repository.owner.login,
             description: repository.description
-            // Add more properties as needed
           });
         });
 
@@ -45,5 +45,50 @@ router.post('/', async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+
+
+// github issues search
+router.post('/issues', async (req, res) => {
+    let returnedIssues = [];
+    
+    const owner = req.body.owner;
+    const repo = req.body.repoName;
+    
+    console.log(owner);
+    console.log(repo);
+    
+    try {
+        const response = await octokit.request(`GET /repos/${owner}/${repo}/issues`);
+        console.log(response.data);
+    
+        // Extract the list of repositories from the response
+        const issues = response.data;
+        
+        // Loop through the repositories and display their information
+        issues.forEach(issue => {
+          returnedIssues.push({
+            issue_number: issue.number,
+            issue_state: issue.state,
+            issue_title: issue.title,
+            issue_body: issue.body,
+            issue_url: issue.url,
+          });
+        });
+
+        // Store the repositories in the user's session
+        req.session.save(() => {
+            req.session.issues = returnedIssues;
+            // Return the repositories as a response
+            res.json({ issues: returnedIssues });
+        })
+
+        console.log(req.session.issues);
+   
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
 
 module.exports = router;

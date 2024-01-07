@@ -82,7 +82,6 @@ router.get('/reposearch', withAuth, async (req, res) => {
   
   let repositories = [];
   repositories = req.session.repos;
-  console.log("Repos " + repositories);
 
   const renderData = {
     title: 'Search Repos',
@@ -99,11 +98,19 @@ router.get('/reposearch', withAuth, async (req, res) => {
 
 // github issues after repo search
 router.get('/issues', withAuth, (req, res) => {
-  res.render('issues', {
+  let issues = [];
+  issues = req.session.issues;
+
+  const renderData = {
     title: 'Repo Issues',
     style: 'dashboard.css',
     logged_in: req.session.logged_in
-  });
+  };
+  
+  if (issues) {
+    renderData.issues = issues; 
+  }
+  res.render('issues', renderData);
 });
 
 // most wanted top bounties
