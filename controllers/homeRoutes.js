@@ -95,38 +95,32 @@ router.get('/bugs', withAuth, async (req, res) => {
 
   try {
 
-    // const bugs = await Bugs.findAll({
-    //   attributes: ['issue_title', 'issue_url', 'bounties.id'],
-    //   include: [
-    //     { model: Bounties }
-    //   ]
-    // });
-
     const bugs = await Bugs.findAll({
-      include: [{ 
-        model: Bounties,
-        attributes: [],
-        as: 'bounties'
-       }],
+      include: [
+        {
+          model: Repos,
+          attributes: ['repo_name'],
+        },
+        {
+          model: Bounties,
+          attributes: [], // tell sequelize we don't want any of the columns from the joined table Bounties
+          as: 'bounties'
+        }
+      ],
       attributes: [
         'issue_title',
         [sequelize.fn('SUM', sequelize.col('bounties.bounty_amount')), 'bountyTotal']
       ],
       group: ['bugs.id'],
       order: [['bountyTotal', 'DESC']],
-      limit: 2,
+      limit: 10,
       subQuery: false
     })
 
-    console.log(bugs);
-
-    console.log("=======CONVERTING=======");
-
-    const bounties = bugs.map((bug) => bug.get({ plain: true }));
-
-    console.log(bounties)
+    const bountiesData = bugs.map((bug) => bug.get({ plain: true }));
 
     res.render('bugs', {
+      bountiesData,
       title: 'Search for Bugs',
       style: 'dashboard.css',
       logged_in: req.session.logged_in
