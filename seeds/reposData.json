@@ -13,6 +13,11 @@
         "repo_owner": "SJTU-IPADS",
         "repo_name": "PowerInfer",
         "repo_url": "https://github.com/SJTU-IPADS/PowerInfer"
+    },
+    {
+        "repo_owner": "freeCodeCamp",
+        "repo_name": "freeCodeCamp",
+        "repo_url": "https://github.com/freeCodeCamp/freeCodeCamp"
     }
   ]
   

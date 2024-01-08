@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const { Users, Bounties, Bugs, FollowedRepos, Repos } = require('../models');
+const sequelize = require('../config/connection');
 const { Octokit } = require("@octokit/core");
 
 const octokit = new Octokit({ 
   auth: process.env.API_KEY
 });
-
 
 const withAuth = require('../utils/auth');
 
@@ -114,12 +114,45 @@ router.get('/issues', withAuth, (req, res) => {
 });
 
 // most wanted top bounties
-router.get('/bugs', withAuth, (req, res) => {
-  res.render('bugs', {
-    title: 'Search for Bugs',
-    style: 'dashboard.css',
-    logged_in: req.session.logged_in
-  });
+router.get('/bugs', withAuth, async (req, res) => {
+
+  try {
+
+    const bugs = await Bugs.findAll({
+      include: [
+        {
+          model: Repos,
+          attributes: ['repo_name'],
+        },
+        {
+          model: Bounties,
+          attributes: [], // tell sequelize we don't want any of the columns from the joined table Bounties
+          as: 'bounties'
+        }
+      ],
+      attributes: [
+        'issue_title',
+        [sequelize.fn('SUM', sequelize.col('bounties.bounty_amount')), 'bountyTotal']
+      ],
+      group: ['bugs.id'],
+      order: [['bountyTotal', 'DESC']],
+      limit: 10,
+      subQuery: false
+    })
+
+    const bountiesData = bugs.map((bug) => bug.get({ plain: true }));
+
+    res.render('bugs', {
+      bountiesData,
+      title: 'Search for Bugs',
+      style: 'dashboard.css',
+      logged_in: req.session.logged_in
+    });
+
+  } catch (err) {
+    res.status(500).json(err);
+    return;
+  }
 });
 
 // view login page

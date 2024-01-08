@@ -4,15 +4,16 @@ const Repos = require('./Repos');
 const Users = require('./Users');
 const Bounties = require('./Bounties');
 
+// Each repo has many bugs
+Repos.hasMany(Bugs, {
+  foreignKey: 'repo_id'
+});
+
 // Each bug has one repo
 Bugs.belongsTo(Repos, {
   foreignKey: 'repo_id'
 });
 
-// Each repo has many bugs
-Repos.hasMany(Bugs, {
-  foreignKey: 'repo_id'
-});
 
 // FollowedRepos belongs to Users
 Repos.belongsToMany(Users, {

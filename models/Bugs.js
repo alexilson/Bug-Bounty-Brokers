@@ -28,7 +28,7 @@ Bugs.init(
         allowNull: false
     },
     issue_body: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false
     },
     issue_url: { // html_url
