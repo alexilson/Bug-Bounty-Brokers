@@ -1,6 +1,11 @@
 const router = require('express').Router();
 const { Users, Bounties, Bugs, FollowedRepos, Repos } = require('../models');
 const sequelize = require('../config/connection');
+const { Octokit } = require("@octokit/core");
+
+const octokit = new Octokit({ 
+  auth: process.env.API_KEY
+});
 
 const withAuth = require('../utils/auth');
 
@@ -45,7 +50,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
-// most wanted top bounties
+// followed repos
 router.get('/feed', withAuth, async (req, res) => {
   try {
     // get user data
@@ -73,21 +78,39 @@ router.get('/feed', withAuth, async (req, res) => {
 });
 
 // github repo search page
-router.get('/search', withAuth, (req, res) => {
-  res.render('search', {
+router.get('/reposearch', withAuth, async (req, res) => {
+  
+  let repositories = [];
+  repositories = req.session.repos;
+
+  const renderData = {
     title: 'Search Repos',
     style: 'dashboard.css',
     logged_in: req.session.logged_in
-  });
+  };
+  
+  if (repositories) {
+    renderData.repositories = repositories; 
+  }
+  
+  res.render('search', renderData);
 });
 
 // github issues after repo search
 router.get('/issues', withAuth, (req, res) => {
-  res.render('issues', {
+  let issues = [];
+  issues = req.session.issues;
+
+  const renderData = {
     title: 'Repo Issues',
     style: 'dashboard.css',
     logged_in: req.session.logged_in
-  });
+  };
+  
+  if (issues) {
+    renderData.issues = issues; 
+  }
+  res.render('issues', renderData);
 });
 
 // most wanted top bounties
