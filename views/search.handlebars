@@ -1,19 +1,11 @@
-<style>
-    body {
-    font-family: 'JetBrains Mono', monospace;
-    background-color: black;
-    color: whitesmoke;
-}
-
-.container {
-    margin-top: 5rem;
-}
-
-.card {
-    color: black;
-}
-
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="your-styles.css">
+    <title>Search Page</title>
+</head>
 <body>
     <div class="container mt-4">
         <h1 class="text-center mb-4">Search Page</h1>
@@ -23,7 +15,7 @@
                 <div class="list-group">
                     <a href="/dashboard" class="list-group-item list-group-item-action">Bounty Board</a>
                     <a href="/feed" class="list-group-item list-group-item-action">Bug Feed</a>
-                    <a href="/search" class="list-group-item list-group-item-action">Search Repos</a>
+                    <a href="/reposearch" class="list-group-item list-group-item-action">Search Repos</a>
                     <a href="/bugs" class="list-group-item list-group-item-action">Most Wanted</a>
                 </div>
             </div>
@@ -31,11 +23,11 @@
             <!-- Main Content -->
             <div class="col-md-9">
                 <!-- Search Bar Form -->
-                <form action="/search/" method="GET">
+                <form id="search-form">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2" name="query">
+                        <input id="search" type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit">Search</button>
+                            <button class="btn btn-primary" type="submit" id="search-button">Search</button>
                         </div>
                     </div>
                 </form>
@@ -46,9 +38,9 @@
                     {{#each repositories as |repository|}}
                     <div class="card mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">{{repository.full_name}}<a href="#" class="btn btn-primary btn-sm ml-2">Follow</a></h5>
+                            <h5 class="card-title">{{repository.name}}<a href="#" class="btn btn-primary btn-sm ml-2">Follow</a></h5>
                             <p class="card-text">{{repository.description}}</p>
-                            <a href="/issues" class="btn btn-primary">See Issues</a>
+                            <a class="btn btn-primary see-issues-button" data-repo-name="{{repository.name}}" data-owner="{{repository.owner}}">See Issues</a>
                         </div>
                     </div>
                     {{/each}}
@@ -56,4 +48,7 @@
             </div>
         </div>
     </div>
+    <script src="js/search.js"></script>
+    <script src="js/issues.js"></script>
 </body>
+</html>
