@@ -4,7 +4,7 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
-    background-color: black;
+    background-image: repeating-radial-gradient( yellow , red); 
 }
 
 .splash-container {
@@ -23,26 +23,65 @@ body {
 
 .title {
     font-size: 36px;
-    margin-bottom: 10px;
 }
 
 .description {
-    font-size: 18px;
-    color: #555;
+    font-size: 20px;
+    color: black;
     margin-bottom: 30px;
 }
 
-.cta-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 18px;
-    text-decoration: none;
-    color: #fff;
-    background-color: #007bff;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
-.cta-button:hover {
-    background-color: #0056b3;
+button {
+    margin: 1rem;
+}
+
+.btn {
+    background-color: var(--background-color);
+    color: white;
+    padding: .5em 1rem;
+    border-radius: 10px;
+    outline: none;
+    position: relative;
+    cursor: pointer;
+    border: 2px black;
+
+    --background-color: blue;
+    --border-size: 2px;
+    --accent-color: #0AF;
+}
+
+.btn.btn-primary-cta-button::before {
+    content: '';
+    position: absolute;
+   border-radius: 7px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background-image: linear-gradient(to left , yellow , red); 
+
+
+    transition: transform 300ms ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.btn.btn-primary-cta-button:hover::before,
+.btn.btn-primary-cta-button:focus::before {
+    transform: scaleX(1);
+}
+
+.btn.btn-primary-cta-button{
+    transition: color 300 ms ease-in-out;
+    z-index: 1;
+}
+
+.btn.btn-primary-cta-button:hover,
+.btn.btn-primary-cta-button:focus {
+    color: black;
 }

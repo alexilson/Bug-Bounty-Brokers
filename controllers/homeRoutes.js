@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Users } = require('../models');
 const withAuth = require('../utils/auth');
 
+
 // view home splash page
 router.get('/', (req, res) => {
   if (req.session.logged_in) {
@@ -11,6 +12,7 @@ router.get('/', (req, res) => {
   res.render('splash', {
     title: 'Bug Bounty Brokers',
     style: 'splash.css'
+    
   });
 });
 

@@ -1,44 +1,27 @@
 <body>
-    <div class="container mt-4">
-        <h1 class="text-center mb-4">💥Most Wanted💥</h1>
-        <div class="row">
-            <!-- Side Panel -->
-            <div class="col-md-3">
-                <div class="list-group">
-                    <a href="/dashboard" class="list-group-item list-group-item-action">Bounty Board</a>
-                    <a href="/feed" class="list-group-item list-group-item-action">Bug Feed</a>
-                    <a href="/search" class="list-group-item list-group-item-action">Search Repos</a>
-                    <a href="/bugs" class="list-group-item list-group-item-action">Most Wanted</a>
-                </div>
+    <div class="container mt-5">
+        <h2>GitHub Repo Search</h2>
+        <form class="form search-form">
+            <div class="mb-3">
+                <label for="repo-search" class="form-label">Search GitHub Repositories:</label>
+                <input class="form-control" type="text" id="repo-search">
             </div>
-
-            <!-- Main Content -->
-            <div class="col-md-9">
-                <!-- Cards for Issues -->
-                <div class="card-container">
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Issue 1</h5>
-                            <p class="card-text">Description of issue 1.</p>
-                            <a href="#" class="btn btn-primary">Add to bounty</a>
-                        </div>
-                    </div>
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Issue 2</h5>
-                            <p class="card-text">Description of issue 2.</p>
-                            <a href="#" class="btn btn-primary">Add to bounty</a>
-                        </div>
-                    </div>
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Issue 3</h5>
-                            <p class="card-text">Description of issue 3.</p>
-                            <a href="#" class="btn btn-primary">Add to bounty</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit">Search</button>
             </div>
-        </div>
+        </form>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+            <tbody id="repo-results">
+                <!-- Results will be displayed here -->
+            </tbody>
+        </table>
     </div>
-</body>
+
+    <!-- <script src="js/search.js"></script> -->

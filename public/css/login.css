@@ -1,6 +1,25 @@
 body {
     font-family: 'JetBrains Mono', monospace;
-    background-color: black;
-    color: whitesmoke;
+    background-image: linear-gradient(to left , yellow , red); 
+    color: black;
 }
 
+.mb-3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+p a{
+    display: flex;
+    justify-content: center;
+    display: inline-block; /* Convert the anchor to a block-level element */
+    margin: 0 5px;
+}
+
+h2{
+    display: center;
+    justify-content: center;
+    margin: 0 500px;
+}
