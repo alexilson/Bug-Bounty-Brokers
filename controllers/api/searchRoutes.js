@@ -59,14 +59,18 @@ router.post('/issues', async (req, res) => {
     
     try {
         const response = await octokit.request(`GET /repos/${owner}/${repo}/issues`);
-        console.log(response.data);
     
         // Extract the list of repositories from the response
         const issues = response.data;
         
+        // check bounty table 
+
+
         // Loop through the repositories and display their information
         issues.forEach(issue => {
           returnedIssues.push({
+            repo_owner: owner,
+            repo_name: repo,
             issue_number: issue.number,
             issue_state: issue.state,
             issue_title: issue.title,
@@ -76,7 +80,7 @@ router.post('/issues', async (req, res) => {
         });
 
         // Store the repositories in the user's session
-        req.session.save(() => {
+        await req.session.save(() => {
             req.session.issues = returnedIssues;
             // Return the repositories as a response
             res.json({ issues: returnedIssues });
@@ -88,6 +92,14 @@ router.post('/issues', async (req, res) => {
         console.error(error);
         res.status(500).json({ message: 'Internal server error' });
     }
+});
+
+// github clear session storage
+router.post('/clear', async (req, res) => {
+  delete req.session.repos;
+  delete req.session.issues;
+  await req.session.save(); // You can use async/await for session saving
+  res.json({ message: 'Repository data removed' });
 });
 
 

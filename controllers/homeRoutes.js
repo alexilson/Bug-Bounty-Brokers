@@ -33,7 +33,12 @@ router.get('/dashboard', withAuth, async (req, res) => {
       where: {user_id: req.session.user_id},
       include: [{
         model: Bugs,
-        attributes: ['issue_title', 'issue_url']
+        include:[
+          {
+            model: Repos,
+            attributes: ['repo_owner', 'repo_name']
+          }
+        ]
       }]
     })
     const bounties = bountiesData.map((bounty) => bounty.get({ plain: true}))
@@ -62,7 +67,6 @@ router.get('/feed', withAuth, async (req, res) => {
     });
     
     const userData = user.get({ plain: true });
-    console.log(userData);
 
     res.render('feed', {
       userData,
@@ -108,7 +112,11 @@ router.get('/issues', withAuth, (req, res) => {
   };
   
   if (issues) {
-    renderData.issues = issues; 
+    const repo = issues[0].repo_name;
+    const owner = issues[0].repo_owner;
+    renderData.issues = issues;
+    renderData.owner = owner;
+    renderData.repo = repo; 
   }
   res.render('issues', renderData);
 });
