@@ -9,6 +9,7 @@ const octokit = new Octokit({
 
 const withAuth = require('../utils/auth');
 
+
 // view home splash page
 router.get('/', (req, res) => {
   if (req.session.logged_in) {
@@ -18,6 +19,7 @@ router.get('/', (req, res) => {
   res.render('splash', {
     title: 'Bug Bounty Brokers',
     style: 'splash.css'
+    
   });
 });
 
