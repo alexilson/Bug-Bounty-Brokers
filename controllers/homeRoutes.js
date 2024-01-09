@@ -58,29 +58,12 @@ router.get('/dashboard', withAuth, async (req, res) => {
 });
 
 // followed repos
-router.get('/feed', withAuth, async (req, res) => {
-  try {
-    // get user data
-    const user = await Users.findByPk(req.session.user_id, {
-      include: [{
-        model: Repos,
-        through: FollowedRepos
-      }]
-    });
-    
-    const userData = user.get({ plain: true });
-
-    res.render('feed', {
-      userData,
-      repos: userData.repos,
-      title: 'Followed Repos',
+router.get('/help', withAuth, async (req, res) => {
+    res.render('help', {
+      title: 'Help Center',
       style: 'dashboard.css',
       logged_in: req.session.logged_in
     });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-  
 });
 
 // github repo search page
