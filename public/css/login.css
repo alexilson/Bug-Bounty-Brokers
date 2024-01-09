@@ -11,10 +11,12 @@ body {
 
 }
 
-p a{
-    display: flex;
-    justify-content: center;
-    display: inline-block; /* Convert the anchor to a block-level element */
+p {
+    text-align: center; 
+}
+
+a {
+    display: inline-block; 
     margin: 0 5px;
 }
 
@@ -22,4 +24,67 @@ h2{
     display: center;
     justify-content: center;
     margin: 0 500px;
+}
+
+.form-control{
+    border: 2px solid black;
+}
+
+.form-label{
+    font-weight: bold;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+button {
+    margin: 1rem;
+}
+
+.btn {
+    background-color: var(--background-color);
+    color: white;
+    padding: .5em 1rem;
+    border-radius: 10px;
+    outline: none;
+    position: relative;
+    cursor: pointer;
+    border: 2px black;
+
+    --background-color: blue;
+    --border-size: 2px;
+    --accent-color: #0AF;
+}
+
+.btn.btn-primary::before {
+    content: '';
+    position: absolute;
+   border-radius: 7px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background-image: linear-gradient(to left , yellow , red); 
+
+
+    transition: transform 300ms ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.btn.btn-primary:hover::before,
+.btn.btn-primary:focus::before {
+    transform: scaleX(1);
+}
+
+.btn.btn-primary{
+    transition: color 300 ms ease-in-out;
+    z-index: 1;
+}
+
+.btn.btn-primary:hover,
+.btn.btn-primary:focus {
+    color: black;
 }
