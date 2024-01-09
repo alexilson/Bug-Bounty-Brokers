@@ -2,25 +2,33 @@
     <div class="container mt-4">
         <h1 class="text-center mb-4">{{userData.username}}'s Bug Bounties</h1>
         <div class="row">
-            <!-- Side Panel -->
-            <div class="col-md-3">
-                <div class="list-group">
-                    <a href="/dashboard" class="list-group-item list-group-item-action">Bounty Board</a>
-                    <a href="/feed" class="list-group-item list-group-item-action">Bug Feed</a>
-                    <a href="/reposearch" class="list-group-item list-group-item-action">Search Repos</a>
-                    <a href="/bugs" class="list-group-item list-group-item-action">Most Wanted</a>
-                </div>
-            </div>
-
-             <!-- Main Content -->
+           <!-- Side Panel -->
+            {{> sidebar}}
+    <!-- Main Content -->
     <div class="col-md-9">
       <div class="card-container">
-        {{#each bounties as |bounty|}}
-        <div class="card mb-3">
-          <h2>{{bounty.bug.issue_title}}</h2>
-          <p>{{bounty.bug.issue_url}}</p>
+       {{#each bounties as |bounty|}}
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <p class="card-text">Owner: {{bounty.bug.repo.repo_owner}}</p>
+                <p class="card-text">Repo: {{bounty.bug.repo.repo_name}}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+                <p class="card-text">Issue Number: {{bounty.bug.issue_number}}</p>
+                <p class="card-text">State: {{bounty.bug.issue_state}}</p>
+            </div>
+            <p class="card-text" style="max-height: 3em; overflow: hidden; text-overflow: ellipsis;">Description of Issue: {{bounty.bug.issue_body}}</p>
+            <p class="card-text">URL: <a href="{{bounty.bug.issue_url}}">{{bounty.bug.issue_url}}</a></p>
+            <div class="d-flex justify-content-between">
+                <p class="card-text">Add Bounty: <input type="text" placeholder="Enter Bounty Amount"></p>
+                <p class="card-text">Current Bounty: {{bounty.bounty_amount}}</p>
+            </div>
+            <a href="#" class="btn btn-primary">Create Bounty</a>
         </div>
-        {{/each}}
+    </div>
+{{/each}}
+
       </div>
     </div>
   </div>

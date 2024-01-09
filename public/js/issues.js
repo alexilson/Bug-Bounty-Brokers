@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Your JavaScript code here
-    console.log("JavaScript code is running");
-
 
 // Get all elements with the class "see-issues-button"
 var seeIssuesButtons = document.querySelectorAll('.see-issues-button');
@@ -10,7 +7,6 @@ var seeIssuesButtons = document.querySelectorAll('.see-issues-button');
 seeIssuesButtons.forEach(function(button) {
     button.addEventListener('click', async function(event) {
         event.preventDefault(); // Prevent the default link behavior
-        console.log("BUTTON PUSHED");
 
         // Retrieve the data attributes from the button
         var repoName = button.getAttribute('data-repo-name');
