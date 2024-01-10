@@ -30,7 +30,8 @@ Bugs.init(
     },
     issue_body: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: false,
+        defaultValue: "No Description"
     },
     issue_url: { // html_url
         type: DataTypes.STRING,

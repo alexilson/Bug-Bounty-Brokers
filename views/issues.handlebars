@@ -17,12 +17,11 @@
                                 <div class="d-flex justify-content-between">
                                     <p class="card-text">Issue Number: {{issue.issue_number}}</p>
                                     <p class="card-text">State: {{issue.issue_state}}</p>
-                                     <p class="card-text">Title: {{issue.issue_title}}</p>
                                 </div>
                                 <p class="card-text" style="max-height: 3em; overflow: hidden; text-overflow: ellipsis;">Description of Issue: {{issue.issue_body}}</p>
                                 <p class="card-text">URL: <a href="{{issue.issue_url}}">{{issue.issue_url}}</a></p>
                                 <div class="d-flex justify-content-between">
-                                    <p id="bounty-input" class="card-text">Add Bounty: <input type="text" placeholder="Enter Bounty Amount"></p>
+                                    <p id="bounty-input" class="card-text">Add Bounty: <input type="text" placeholder="Enter Bounty Amount" /></p>
                                     {{#if issue.bounty_total}}
                                     <p class="card-text">Current Bounty: {{issue.bounty_total}}</p>
                                     {{else}}

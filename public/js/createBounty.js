@@ -20,9 +20,10 @@ document.addEventListener('DOMContentLoaded', function () {
             var issue_body = button.getAttribute('data-issue-body');
             var issue_url = button.getAttribute('data-issue-url');
 
-            // Select the "Add Bounty" input field and retrieve its value
-            var bountyInput = document.querySelector('#bounty-input input');
+           // Select the "Add Bounty" input field and retrieve its value
+            var bountyInput = button.closest('.card').querySelector('#bounty-input input');
             var bounty = bountyInput.value;
+
 
             console.log(repo_name);
             console.log(repo_owner);
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
+            var newBugId = ""
             // Post to bugs db
             if (issue_number && issue_state && issue_body && issue_url) {
                 try {
@@ -64,11 +66,35 @@ document.addEventListener('DOMContentLoaded', function () {
                         headers: { 'Content-Type': 'application/json' },
                     });
                     if (response.ok) {
-                        // document.location.replace('/issues');
+                        const newBugData = await response.json(); 
+                        newBugId = newBugData.id;
                     } else {
                         const errorText = await response.text();
                         console.error('Failed to post issue', errorText);
                         alert('Failed to post issue');
+                    }
+                } catch (error) {
+                    console.error('An error occurred:', error);
+                    alert('An error occurred while processing the request');
+                }
+            }
+            
+            console.log("MADE IT TO BOUNTY CALL >>>>>>>>>>>>>>>>>>>>>>>>>>> " + newBugId)
+             // Post to bounty 
+             if (newBugId && bounty) {
+                console.log(newBugId);
+                try {
+                    const response = await fetch('/api/bounty', {
+                        method: 'POST',
+                        body: JSON.stringify({ newBugId, bounty}),
+                        headers: { 'Content-Type': 'application/json' },
+                    });
+                    if (response.ok) {
+                     
+                    } else {
+                        const errorText = await response.text();
+                        console.error('Failed to post bounty', errorText);
+                        alert('Failed to post bounty');
                     }
                 } catch (error) {
                     console.error('An error occurred:', error);
