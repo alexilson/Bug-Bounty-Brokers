@@ -23,27 +23,48 @@ router.get('/', (req, res) => {
   });
 });
 
+
 // view user dashboard page with user data
 router.get('/dashboard', withAuth, async (req, res) => {
+
   try {
     // get user data
     const user = await Users.findByPk(req.session.user_id);
     const userData = user.get({ plain: true });
 
-    //get bounties
-    const bountiesData =await Bounties.findAll({
-      where: {user_id: req.session.user_id},
-      include: [{
-        model: Bugs,
-        include:[
-          {
-            model: Repos,
-            attributes: ['repo_owner', 'repo_name']
-          }
-        ]
-      }]
+    console.log("Query complete")
+    console.log("Querying bounties")
+
+    // get bounties that match the user's user_id
+    const bountiesData = await Bugs.findAll({
+      include: [
+        {
+          model: Repos,
+          attributes: ['repo_name', 'repo_owner']
+        },
+        {
+          model: Bounties,
+          where: {
+            user_id: req.session.user_id
+          },
+          attributes: [], // tell sequelize we don't want any of the columns from the joined table Bounties
+          as: 'bounties'
+        }
+      ],
+      attributes: [
+        'issue_title',
+        'issue_state',
+        'issue_url',
+        'issue_body',
+        'issue_number',
+        [sequelize.fn('SUM', sequelize.col('bounties.bounty_amount')), 'bounty_total']
+      ],
+      group: ['bugs.id'],
+      order: [['bounty_total', 'DESC']],
+      subQuery: false
     })
-    const bounties = bountiesData.map((bounty) => bounty.get({ plain: true}))
+
+    const bounties = bountiesData.map((bounty) => bounty.get({ plain: true }));
 
     res.render('dashboard', {
       userData,
@@ -52,10 +73,13 @@ router.get('/dashboard', withAuth, async (req, res) => {
       style: 'dashboard.css',
       logged_in: req.session.logged_in
     });
+
   } catch (err) {
     res.status(500).json(err);
+    return;
   }
 });
+
 
 // followed repos
 router.get('/help', withAuth, async (req, res) => {
@@ -65,6 +89,7 @@ router.get('/help', withAuth, async (req, res) => {
       logged_in: req.session.logged_in
     });
 });
+
 
 // github repo search page
 router.get('/reposearch', withAuth, async (req, res) => {
@@ -84,6 +109,7 @@ router.get('/reposearch', withAuth, async (req, res) => {
   
   res.render('search', renderData);
 });
+
 
 // github issues after repo search
 router.get('/issues', withAuth, (req, res) => {
@@ -106,16 +132,16 @@ router.get('/issues', withAuth, (req, res) => {
   res.render('issues', renderData);
 });
 
+
 // most wanted top bounties
 router.get('/bugs', withAuth, async (req, res) => {
 
   try {
-
-    const bugs = await Bugs.findAll({
+    const bountyData = await Bugs.findAll({
       include: [
         {
           model: Repos,
-          attributes: ['repo_name'],
+          attributes: ['repo_name', 'repo_owner']
         },
         {
           model: Bounties,
@@ -125,18 +151,22 @@ router.get('/bugs', withAuth, async (req, res) => {
       ],
       attributes: [
         'issue_title',
-        [sequelize.fn('SUM', sequelize.col('bounties.bounty_amount')), 'bountyTotal']
+        'issue_state',
+        'issue_url',
+        'issue_body',
+        'issue_number',
+        [sequelize.fn('SUM', sequelize.col('bounties.bounty_amount')), 'bounty_total']
       ],
       group: ['bugs.id'],
-      order: [['bountyTotal', 'DESC']],
+      order: [['bounty_total', 'DESC']],
       limit: 10,
       subQuery: false
     })
 
-    const bountiesData = bugs.map((bug) => bug.get({ plain: true }));
+    const bounties = bountyData.map((bounty) => bounty.get({ plain: true }));
 
     res.render('bugs', {
-      bountiesData,
+      bounties,
       title: 'Search for Bugs',
       style: 'dashboard.css',
       logged_in: req.session.logged_in
@@ -147,6 +177,7 @@ router.get('/bugs', withAuth, async (req, res) => {
     return;
   }
 });
+
 
 // view login page
 router.get('/login', (req, res) => {
@@ -160,6 +191,7 @@ router.get('/login', (req, res) => {
   });
 });
 
+
 // view sign up page
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
@@ -171,5 +203,6 @@ router.get('/signup', (req, res) => {
     style: 'signup.css'
   });
 });
+
 
 module.exports = router;
