@@ -22,7 +22,11 @@
                                 <p class="card-text">URL: <a href="{{issue.issue_url}}">{{issue.issue_url}}</a></p>
                                 <div class="d-flex justify-content-between">
                                     <p class="card-text">Add Bounty: <input type="text" placeholder="Enter Bounty Amount"></p>
-                                    <p class="card-text">Current Bounty: {{issue.current_bounty}}</p>
+                                    {{#if issue.bounty_total}}
+                                    <p class="card-text">Current Bounty: {{issue.bounty_total}}</p>
+                                    {{else}}
+                                    <p class="card-text">Current Bounty: 0</p>
+                                    {{/if}}
                                 </div>
                                 <a href="#" class="btn btn-primary">Create Bounty</a>
                             </div>

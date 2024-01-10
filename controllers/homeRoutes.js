@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Users, Bounties, Bugs, FollowedRepos, Repos } = require('../models');
 const sequelize = require('../config/connection');
+const { Op } = require("sequelize");
 const { Octokit } = require("@octokit/core");
 
 const octokit = new Octokit({ 
@@ -81,7 +82,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 });
 
 
-// followed repos
+// help center
 router.get('/help', withAuth, async (req, res) => {
     res.render('help', {
       title: 'Help Center',
@@ -112,7 +113,7 @@ router.get('/reposearch', withAuth, async (req, res) => {
 
 
 // github issues after repo search
-router.get('/issues', withAuth, (req, res) => {
+router.get('/issues', withAuth, async (req, res) => {
   let issues = [];
   issues = req.session.issues;
 
@@ -125,10 +126,54 @@ router.get('/issues', withAuth, (req, res) => {
   if (issues) {
     const repo = issues[0].repo_name;
     const owner = issues[0].repo_owner;
+
+    // get all the issue urls into an array
+    const urlArray = [];
+    issues.forEach(issue => {
+      if (issue.issue_url) {
+        urlArray.push(issue.issue_url);
+      }
+    });
+    
+    // get all existing bounties
+    const bountiesData = await Bugs.findAll({
+      include: [
+        {
+          model: Bounties,
+          attributes: [], // tell sequelize we don't want any of the columns from the joined table Bounties
+          as: 'bounties'
+        }
+      ],
+      where: {
+        issue_url: {
+          [Op.in]: urlArray
+        }
+      },
+      attributes: [
+        'issue_url',
+        [sequelize.fn('SUM', sequelize.col('bounties.bounty_amount')), 'bounty_total']
+      ],
+      group: ['bugs.id', 'issue_url'],
+      subQuery: false
+    });
+
+    const bounties = bountiesData.map((bounty) => bounty.get({ plain: true }));
+
+    // add the bounty total to each matching issue
+    issues.forEach(issue => {
+
+      const urlMatch = bounties.find(bounty => bounty.issue_url === issue.issue_url);
+
+      if (urlMatch) {
+        issue.bounty_total  = urlMatch.bounty_total;
+      }
+    });
+
     renderData.issues = issues;
     renderData.owner = owner;
     renderData.repo = repo; 
   }
+
   res.render('issues', renderData);
 });
 
