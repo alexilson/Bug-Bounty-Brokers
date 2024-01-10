@@ -27,7 +27,8 @@ router.post('/', async (req, res) => {
           returnedRepos.push({
             name: repository.name,
             owner: repository.owner.login,
-            description: repository.description
+            description: repository.description,
+            url: repository.url
           });
         });
 
@@ -53,9 +54,11 @@ router.post('/issues', async (req, res) => {
     
     const owner = req.body.owner;
     const repo = req.body.repoName;
+    const url = req.body.url;
     
     console.log(owner);
     console.log(repo);
+    console.log(url);
     
     try {
         const response = await octokit.request(`GET /repos/${owner}/${repo}/issues`);
@@ -71,6 +74,7 @@ router.post('/issues', async (req, res) => {
           returnedIssues.push({
             repo_owner: owner,
             repo_name: repo,
+            repo_url: url,
             issue_number: issue.number,
             issue_state: issue.state,
             issue_title: issue.title,

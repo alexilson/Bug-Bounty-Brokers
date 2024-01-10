@@ -25,7 +25,8 @@ Bugs.init(
     },
     issue_title: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        defaultValue: "No Title"
     },
     issue_body: {
         type: DataTypes.TEXT,

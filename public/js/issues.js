@@ -11,15 +11,18 @@ seeIssuesButtons.forEach(function(button) {
         // Retrieve the data attributes from the button
         var repoName = button.getAttribute('data-repo-name');
         var owner = button.getAttribute('data-owner');
+        var url = button.getAttribute('data-repo-url');
 
+        console.log("IN issues.js")
         console.log(repoName);
         console.log(owner);
+        console.log(url);
 
-        if (repoName && owner) {
+        if (repoName && owner && url) {
             try {
               const response = await fetch('/api/search/issues', {
                 method: 'POST',
-                body: JSON.stringify({ repoName, owner }),
+                body: JSON.stringify({ repoName, owner, url }),
                 headers: { 'Content-Type': 'application/json' },
               });
         
