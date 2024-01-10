@@ -1,24 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="your-styles.css">
-    <title>Search Page</title>
-</head>
 <body>
     <div class="container mt-4">
         <h1 class="text-center mb-4">Search Page</h1>
         <div class="row">
             <!-- Side Panel -->
-            <div class="col-md-3">
-                <div class="list-group">
-                    <a href="/dashboard" class="list-group-item list-group-item-action">Bounty Board</a>
-                    <a href="/feed" class="list-group-item list-group-item-action">Bug Feed</a>
-                    <a href="/reposearch" class="list-group-item list-group-item-action">Search Repos</a>
-                    <a href="/bugs" class="list-group-item list-group-item-action">Most Wanted</a>
-                </div>
-            </div>
+            {{> sidebar}}
 
             <!-- Main Content -->
             <div class="col-md-9">
@@ -36,13 +21,16 @@
                 <div class="result-container">
                     <!-- Result Card 1 -->
                     {{#each repositories as |repository|}}
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">{{repository.name}}<a href="#" class="btn btn-primary btn-sm ml-2">Follow</a></h5>
-                            <p class="card-text">{{repository.description}}</p>
-                            <a class="btn btn-primary see-issues-button" data-repo-name="{{repository.name}}" data-owner="{{repository.owner}}">See Issues</a>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title row">
+                                    <div class="col repo-name">Repo Name: {{repository.name}}</div>
+                                    <div class="col text-right repo-owner">Repo Owner: {{repository.owner}}</div>
+                                </h5>
+                                <p class="card-text">{{repository.description}}</p>
+                                <a class="btn btn-primary see-issues-button" data-repo-name="{{repository.name}}" data-owner="{{repository.owner}}">See Issues</a>
+                            </div>
                         </div>
-                    </div>
                     {{/each}}
                 </div>
             </div>
@@ -51,4 +39,3 @@
     <script src="js/search.js"></script>
     <script src="js/issues.js"></script>
 </body>
-</html>
