@@ -75,7 +75,7 @@ router.post('/issues', async (req, res) => {
             issue_state: issue.state,
             issue_title: issue.title,
             issue_body: issue.body,
-            issue_url: issue.url,
+            issue_url: issue.html_url,
           });
         });
 

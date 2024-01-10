@@ -8,15 +8,7 @@
             <div class="col-md-9">
                 <!-- Cards for Issues -->
                 <div class="card-container">
-                    {{#each bountiesData as |bounty|}}
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">{{bounty.issue_title}}</h5>
-                                <p class="card-text">Bounty Amount: {{bounty.bountyTotal}}</p>
-                                {{!-- <a href="#" class="btn btn-primary">Add to bounty</a> --}}
-                            </div>
-                        </div>
-                    {{/each}}
+                    {{> my_bounties}}
                 </div>
             </div>
         </form>

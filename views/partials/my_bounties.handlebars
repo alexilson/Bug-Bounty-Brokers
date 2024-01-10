@@ -1,0 +1,21 @@
+                    {{#each bounties as |bounty|}}
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-text">Owner: {{bounty.repo.repo_owner}}</p>
+                                    <p class="card-text">Repo: {{bounty.repo.repo_name}}</p>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-text">Issue Number: {{bounty.issue_number}}</p>
+                                    <p class="card-text">State: {{bounty.issue_state}}</p>
+                                </div>
+                                <p class="card-text" style="max-height: 3em; overflow: hidden; text-overflow: ellipsis;">Description of Issue: {{bounty.issue_body}}</p>
+                                <p class="card-text">URL: <a href="{{bounty.issue_url}}">{{bounty.issue_url}}</a></p>
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-text">Add Bounty: <input type="text" placeholder="Enter Bounty Amount"></p>
+                                    <p class="card-text">My Bounty: {{bounty.bounty_total}}</p>
+                                </div>
+                                <a href="#" class="btn btn-primary">Create Bounty</a>
+                            </div>
+                        </div>
+                    {{/each}}
