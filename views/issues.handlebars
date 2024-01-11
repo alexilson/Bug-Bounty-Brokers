@@ -1,6 +1,6 @@
 <body>
     <div class="container mt-4">
-        <h3 class="text-center mb-4">Issues for {{owner}}'s {{repo}}</h3>
+        <h3 class="text-center mb-4 repo-data" data-repo-name="{{repo}}" data-owner="{{owner}}" data-repo-url="{{url}}"> Issues for {{owner}}'s {{repo}}</h3>
         <div class="row">
             <!-- Side Panel -->
             {{> sidebar}}
@@ -21,14 +21,17 @@
                                 <p class="card-text" style="max-height: 3em; overflow: hidden; text-overflow: ellipsis;">Description of Issue: {{issue.issue_body}}</p>
                                 <p class="card-text">URL: <a href="{{issue.issue_url}}">{{issue.issue_url}}</a></p>
                                 <div class="d-flex justify-content-between">
-                                    <p class="card-text">Add Bounty: <input type="text" placeholder="Enter Bounty Amount"></p>
+                                    <p id="bounty-input" class="card-text">Add Bounty: <input type="text" placeholder="Enter Bounty Amount" /></p>
                                     {{#if issue.bounty_total}}
                                     <p class="card-text">Current Bounty: {{issue.bounty_total}}</p>
                                     {{else}}
                                     <p class="card-text">Current Bounty: 0</p>
                                     {{/if}}
                                 </div>
-                                <a href="#" class="btn btn-primary">Create Bounty</a>
+                                <a id="create-bounty" class="btn btn-primary" 
+                                data-issue-title="{{issue.issue_title}}" 
+                                data-issue-number="{{issue.issue_number}}" data-issue-state="{{issue.issue_state}}" data-issue-body="{{issue.issue_body}}" data-issue-url="{{issue.issue_url}}"
+                                >Create Bounty</a>
                             </div>
                         </div>
                     {{/each}}
@@ -36,4 +39,5 @@
             </div>
         </div>
     </div>
+    <script src="js/createBounty.js"></script>
 </body>

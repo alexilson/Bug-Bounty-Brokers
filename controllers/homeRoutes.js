@@ -41,7 +41,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
       include: [
         {
           model: Repos,
-          attributes: ['repo_name', 'repo_owner']
+          attributes: ['repo_name', 'repo_owner', 'repo_url']
         },
         {
           model: Bounties,
@@ -126,6 +126,7 @@ router.get('/issues', withAuth, async (req, res) => {
   if (issues) {
     const repo = issues[0].repo_name;
     const owner = issues[0].repo_owner;
+    const url = issues[0].repo_url;
 
     // get all the issue urls into an array
     const urlArray = [];
@@ -171,7 +172,8 @@ router.get('/issues', withAuth, async (req, res) => {
 
     renderData.issues = issues;
     renderData.owner = owner;
-    renderData.repo = repo; 
+    renderData.repo = repo;
+    renderData.url = url; 
   }
 
   res.render('issues', renderData);

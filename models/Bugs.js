@@ -25,11 +25,13 @@ Bugs.init(
     },
     issue_title: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        defaultValue: "No Title"
     },
     issue_body: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: false,
+        defaultValue: "No Description"
     },
     issue_url: { // html_url
         type: DataTypes.STRING,
