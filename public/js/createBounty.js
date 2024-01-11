@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             var newBugId = ""
             // Post to bugs db
-            if (issue_number && issue_state && issue_body && issue_url) {
+            if (issue_number && issue_state && issue_url) {
                 try {
                     const response = await fetch('/api/bugs', {
                         method: 'POST',
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         headers: { 'Content-Type': 'application/json' },
                     });
                     if (response.ok) {
-                     
+                        document.location.replace('/issues');
                     } else {
                         const errorText = await response.text();
                         console.error('Failed to post bounty', errorText);

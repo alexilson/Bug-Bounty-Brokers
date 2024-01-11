@@ -67,6 +67,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
     const bounties = bountiesData.map((bounty) => bounty.get({ plain: true }));
 
+    console.log(bounties);
+
     res.render('dashboard', {
       userData,
       bounties,
