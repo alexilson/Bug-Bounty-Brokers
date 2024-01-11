@@ -1,13 +1,47 @@
-const User = require('./User');
-const Project = require('./Project');
+const Bugs = require('./Bugs');
+const FollowedRepos = require('./FollowedRepos');
+const Repos = require('./Repos');
+const Users = require('./Users');
+const Bounties = require('./Bounties');
 
-User.hasMany(Project, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
+// Each repo has many bugs
+Repos.hasMany(Bugs, {
+  foreignKey: 'repo_id'
 });
 
-Project.belongsTo(User, {
+// Each bug has one repo
+Bugs.belongsTo(Repos, {
+  foreignKey: 'repo_id'
+});
+
+// FollowedRepos belongs to Users
+Repos.belongsToMany(Users, {
+  through: FollowedRepos
+});
+
+Users.belongsToMany(Repos, {
+  through: FollowedRepos
+});
+
+// Each bounty has one bug
+Bounties.belongsTo(Bugs, {
+  foreignKey: 'bug_id'
+});
+
+// Each bug has many bounties
+Bugs.hasMany(Bounties, {
+  foreignKey: 'bug_id'
+});
+
+// Each bounty has one user
+Bounties.belongsTo(Users, {
   foreignKey: 'user_id'
 });
 
-module.exports = { User, Project };
+// Each user has many bounties
+Users.hasMany(Bugs, {
+  foreignKey: 'user_id'
+});
+
+
+module.exports = { Bugs, FollowedRepos, Repos, Users, Bounties };

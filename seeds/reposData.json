@@ -1,0 +1,23 @@
+[
+    {
+        "repo_owner": "Test",
+        "repo_name": "Test",
+        "repo_url": "https://github.com/test/test"
+    },
+    {
+        "repo_owner": "alexilson",
+        "repo_name": "Bug-Bounty-Brokers",
+        "repo_url": "https://github.com/alexilson/Bug-Bounty-Brokers"
+    },
+    {
+        "repo_owner": "SJTU-IPADS",
+        "repo_name": "PowerInfer",
+        "repo_url": "https://github.com/SJTU-IPADS/PowerInfer"
+    },
+    {
+        "repo_owner": "freeCodeCamp",
+        "repo_name": "freeCodeCamp",
+        "repo_url": "https://github.com/freeCodeCamp/freeCodeCamp"
+    }
+  ]
+  

@@ -1,0 +1,90 @@
+[
+    {
+        "repo_id": "2",
+        "issue_number": "18",
+        "issue_state": "open",
+        "issue_title": "Splash Page",
+        "issue_body": "",
+        "issue_url": "https://github.com/alexilson/Bug-Bounty-Brokers/issues/18"
+    },
+    {
+        "repo_id": "2",
+        "issue_number": "4",
+        "issue_state": "open",
+        "issue_title": "Configure Seeds",
+        "issue_body": "",
+        "issue_url": "https://github.com/alexilson/Bug-Bounty-Brokers/issues/4"
+    },
+    {
+        "repo_id": "1",
+        "issue_number": "17",
+        "issue_state": "closed",
+        "issue_title": "Unable to load assets",
+        "issue_body": "Users are not able to load images due to the assets not loading.",
+        "issue_url": "https://github.com/test/test/issues/17"
+    },
+    {
+        "repo_id": "3",
+        "issue_number": "54",
+        "issue_state": "open",
+        "issue_title": "请问想要部署自己的模型",
+        "issue_body": "应该还需要你们predictor训练的代码吧？还有ft转换relu的",
+        "issue_url": "https://github.com/SJTU-IPADS/PowerInfer/issues/54"
+    },
+    {
+        "repo_id": "4",
+        "issue_number": "53019",
+        "issue_state": "open",
+        "issue_title": "fix tests for step 96 of platformer game",
+        "issue_body": "Previous challenges only worked if the single parameter used for .map() and other types of methods was wrapped in parenthesis. This challene only works if said parameter is NOT wrapped in parenthesis",
+        "issue_url": "https://github.com/freeCodeCamp/freeCodeCamp/issues/53019"
+    },
+    {
+        "repo_id": "4",
+        "issue_number": "52965",
+        "issue_state": "open",
+        "issue_title": "[Todo App] Step 6 should allow usage of single quotes",
+        "issue_body": "When completing this step the tests do not pass if you use single quotes around one of the 'click' argument or the 'hidden' argument in the toggle method used in the callback function while using double quotes for the other. Tests should still pass when single quotes are used for one and double quotes for the other because it still works when written that way. Additionally the hints give no instruction on needing the quotes to be consistent, so if that is a requirement it should be specified to the user.",
+        "issue_url": "https://github.com/freeCodeCamp/freeCodeCamp/issues/53019"
+    },
+    {
+        "repo_id": "4",
+        "issue_number": "53018",
+        "issue_state": "open",
+        "issue_title": "fix step 72 tests for platformer game project",
+        "issue_body": "Should be accepted as an answer, but the site only accepts the answer if platform is wrapped in parenthesis like:",
+        "issue_url": "https://github.com/freeCodeCamp/freeCodeCamp/issues/53018"
+    },
+    {
+        "repo_id": "4",
+        "issue_number": "53018",
+        "issue_state": "open",
+        "issue_title": "Statistics Calculator Step 22 Bad Error Message",
+        "issue_body": "The below code returns this error message",
+        "issue_url": "https://github.com/freeCodeCamp/freeCodeCamp/issues/53018"
+    },
+    {
+        "repo_id": "4",
+        "issue_number": "52905",
+        "issue_state": "open",
+        "issue_title": "Remove Cypress",
+        "issue_body": "This issue to track the work needed for the Cypress removal.",
+        "issue_url": "https://github.com/freeCodeCamp/freeCodeCamp/issues/52905"
+    },
+    {
+        "repo_id": "4",
+        "issue_number": "52932",
+        "issue_state": "open",
+        "issue_title": "[python]: cipher/step-12 instructions",
+        "issue_body": "This is the 2nd most popular step for forum posts behind step 16.",
+        "issue_url": "https://github.com/freeCodeCamp/freeCodeCamp/issues/52932"
+    },
+    {
+        "repo_id": "4",
+        "issue_number": "52955",
+        "issue_state": "open",
+        "issue_title": "Statistics Calculator Step 22 Bad Error Message",
+        "issue_body": "The below code returns this error message",
+        "issue_url": "https://github.com/freeCodeCamp/freeCodeCamp/issues/52955"
+    }
+]

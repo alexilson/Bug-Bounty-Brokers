@@ -1,0 +1,15 @@
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">{{userData.username}}'s Bug Bounties</h1>
+        <div class="row">
+            <!-- Side Panel -->
+            {{> sidebar}}
+            <!-- Main Content -->
+            <div class="col-md-9">
+                <div class="card-container">
+                    {{> my_bounties}}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
