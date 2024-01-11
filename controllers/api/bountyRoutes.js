@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
         user_id: req.session.user_id,
         bounty_amount: req.body.bounty
       }
-      // If the repo doesn't exist, add it to the database
+      // create new record
       const newBounty = await Bounties.create(newBountyData);
       res.status(201).json(newBounty);
   

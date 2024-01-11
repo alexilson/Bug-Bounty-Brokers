@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Users, Bounties, Bugs, FollowedRepos, Repos } = require('../models');
+const { Users, Bounties, Bugs, Repos } = require('../models');
 const sequelize = require('../config/connection');
 const { Op } = require("sequelize");
 const { Octokit } = require("@octokit/core");
@@ -9,7 +9,6 @@ const octokit = new Octokit({
 });
 
 const withAuth = require('../utils/auth');
-
 
 // view home splash page
 router.get('/', (req, res) => {
@@ -32,9 +31,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
     // get user data
     const user = await Users.findByPk(req.session.user_id);
     const userData = user.get({ plain: true });
-
-    console.log("Query complete")
-    console.log("Querying bounties")
 
     // get bounties that match the user's user_id
     const bountiesData = await Bugs.findAll({
@@ -67,8 +63,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
     const bounties = bountiesData.map((bounty) => bounty.get({ plain: true }));
 
-    console.log(bounties);
-
     res.render('dashboard', {
       userData,
       bounties,
@@ -83,21 +77,11 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
-
-// help center
-router.get('/help', withAuth, async (req, res) => {
-    res.render('help', {
-      title: 'Help Center',
-      style: 'dashboard.css',
-      logged_in: req.session.logged_in
-    });
-});
-
-
 // github repo search page
 router.get('/reposearch', withAuth, async (req, res) => {
   
   let repositories = [];
+  // get search results stored in session storage
   repositories = req.session.repos;
 
   const renderData = {
@@ -117,6 +101,7 @@ router.get('/reposearch', withAuth, async (req, res) => {
 // github issues after repo search
 router.get('/issues', withAuth, async (req, res) => {
   let issues = [];
+  // get issues stored in session storage
   issues = req.session.issues;
 
   const renderData = {
@@ -182,7 +167,7 @@ router.get('/issues', withAuth, async (req, res) => {
 });
 
 
-// most wanted top bounties
+// view most wanted top bounties
 router.get('/bugs', withAuth, async (req, res) => {
 
   try {
@@ -227,7 +212,6 @@ router.get('/bugs', withAuth, async (req, res) => {
   }
 });
 
-
 // view login page
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
@@ -239,7 +223,6 @@ router.get('/login', (req, res) => {
     style: 'login.css'
   });
 });
-
 
 // view sign up page
 router.get('/signup', (req, res) => {
