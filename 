@@ -1,0 +1,154 @@
+[33mcommit e07e48ce6ceff50c3cf5a1db28c4cf57a837b179[m[33m ([m[1;36mHEAD[m[33m, [m[1;32mfeature/bounties-table[m[33m)[m
+Author: Alex <ilson.alex@gmail.com>
+Date:   Wed Jan 3 18:09:21 2024 -0800
+
+    Added Bounties model, associations, and seeds
+
+[33mcommit 2a1c6ce66566ede21a021cb522fcfe9025ae08eb[m[33m ([m[1;31morigin/dev[m[33m, [m[1;32mdev[m[33m)[m
+Merge: 47b1677 1e4aaca
+Author: alexilson <ilsonalex@gmail.com>
+Date:   Sun Dec 31 15:52:59 2023 -0800
+
+    Merge pull request #10 from alexilson/feature/express-handlebars
+    
+    Feature/express handlebars
+
+[33mcommit 1e4aaca70c69a6689dd67739cfbaaa79c969cb66[m[33m ([m[1;31morigin/feature/express-handlebars[m[33m)[m
+Author: Spencer Cox <spencox@gmail.com>
+Date:   Wed Dec 27 10:51:45 2023 -0600
+
+    added dashboard functionality and repo/bugs search page. Need to continue to work on other handlebar pages
+
+[33mcommit a8e238950933463293291ac253ec06ea03a0195c[m
+Author: Spencer Cox <spencox@gmail.com>
+Date:   Wed Dec 27 09:32:02 2023 -0600
+
+    got auth working for users that are already in db, can not login and logout of dashboard
+
+[33mcommit 60f0b84f1611225a764857bfe27992efaa373879[m
+Author: Spencer Cox <spencox@gmail.com>
+Date:   Tue Dec 26 12:29:34 2023 -0600
+
+    added login auth capabilities to work on user dashboard pages, added filler code for dashbord
+
+[33mcommit ee0dd99c217fb2e64b5c5c307a4c3cb33e8bc07e[m
+Author: Spencer Cox <spencox@gmail.com>
+Date:   Tue Dec 26 11:37:43 2023 -0600
+
+    figured out how to dynamically pass differnt css style pages per view. Next will fix auth to login existing uses
+
+[33mcommit e1852b4a7c9b254b1205bd7aeb95116a0b6df5e8[m
+Merge: b30871b 47b1677
+Author: Spencox <spencox@gmail.com>
+Date:   Tue Dec 26 10:17:07 2023 -0600
+
+    Merge pull request #9 from alexilson/dev
+    
+    Merge pull request #8 from alexilson/feature/express-handlebars
+
+[33mcommit 47b16771eb015162b8d3fc7d4a5dedc1b069e15e[m
+Merge: b027369 b30871b
+Author: alexilson <ilsonalex@gmail.com>
+Date:   Fri Dec 22 17:17:31 2023 -0800
+
+    Merge pull request #8 from alexilson/feature/express-handlebars
+    
+    Feature/express handlebars
+
+[33mcommit b30871b9822b73c6e51f769f41307a77e3f76886[m
+Author: Spencer Cox <spencox@gmail.com>
+Date:   Fri Dec 22 10:44:33 2023 -0600
+
+    added main.handlebar, now routing homepage (splash), login, signup handlebars. Have some placeholder html and css in place, next will be working on views for user dashboard, repo search, and bug bounty assignment
+
+[33mcommit a8379f41e2d4a59902db670e63c876e6a5afe56b[m
+Merge: 40b51eb b34e197
+Author: Spencer Cox <spencox@gmail.com>
+Date:   Fri Dec 22 08:41:19 2023 -0600
+
+    Merge branch 'feature/express-handlebars' of https://github.com/alexilson/Bug-Bounty-Brokers into feature/express-handlebars
+
+[33mcommit 40b51eb2af14ce40a96e53c27a6075f35de14afc[m
+Merge: 766b5d9 b027369
+Author: Spencer Cox <spencox@gmail.com>
+Date:   Fri Dec 22 08:40:34 2023 -0600
+
+    Merge branch 'dev' of https://github.com/alexilson/Bug-Bounty-Brokers into feature/express-handlebars
+
+[33mcommit 766b5d95324812214605331c94a7ebaeea965e07[m
+Author: Spencer Cox <spencox@gmail.com>
+Date:   Fri Dec 22 08:40:27 2023 -0600
+
+    added homeroute.js file for splash page and basic views layout, also updated server.js
+
+[33mcommit b34e19797ca3d446a6d2b3ca2642b2156379a28b[m
+Merge: 7393dd3 b027369
+Author: Spencox <spencox@gmail.com>
+Date:   Fri Dec 22 08:37:06 2023 -0600
+
+    Merge pull request #7 from alexilson/dev
+    
+    Dev
+
+[33mcommit b0273696ac674dc9547955e8bf2518c555f34307[m
+Merge: 7393dd3 8ac6da9
+Author: Spencox <spencox@gmail.com>
+Date:   Fri Dec 22 08:35:32 2023 -0600
+
+    Merge pull request #6 from alexilson/feature/model-setup
+    
+    Feature/model setup
+
+[33mcommit 8ac6da9b161299561f87dce9f32c824373c09a95[m[33m ([m[1;31morigin/feature/model-setup[m[33m, [m[1;32mfeature/model-setup[m[33m)[m
+Author: Alex <ilson.alex@gmail.com>
+Date:   Thu Dec 21 22:37:56 2023 -0800
+
+    Added more seed data for bugs
+
+[33mcommit 8ea0cff539b2966e90b74841d5ac47ea6da86de0[m
+Author: Alex <ilson.alex@gmail.com>
+Date:   Thu Dec 21 22:19:30 2023 -0800
+
+    Seed script runs and populates db with data.
+
+[33mcommit 33ae90ce9d7e094251eae5dea6a287c955e7c013[m
+Author: Alex <ilson.alex@gmail.com>
+Date:   Thu Dec 21 21:47:15 2023 -0800
+
+    Started working on seeds
+
+[33mcommit 9e48bc615609992bec488c9f36960a0c1829f890[m
+Author: Alex <ilson.alex@gmail.com>
+Date:   Thu Dec 21 21:14:31 2023 -0800
+
+    Added models: Bugs, FollowedRepos, Repos, Users.
+    Added associations to /models/index.js
+    Updated userRoutes to use Users instead of User model
+    Commented out projectRoutes.js and reference in /api/index.js
+
+[33mcommit 7393dd39b41cb5d6bb891149cac5220f4020b5b6[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m, [m[1;32mModel-Setup[m[33m)[m
+Merge: 251174b 11c25ff
+Author: Spencox <spencox@gmail.com>
+Date:   Thu Dec 21 21:10:46 2023 -0600
+
+    Merge pull request #2 from alexilson/Test-Branch
+    
+    Added text to README.md
+
+[33mcommit 11c25ff41739826843d3bb5449060d939b5a5850[m[33m ([m[1;31morigin/Test-Branch[m[33m, [m[1;32mTest-Branch[m[33m)[m
+Author: Alex <ilson.alex@gmail.com>
+Date:   Thu Dec 21 19:06:52 2023 -0800
+
+    Added text to README.md
+
+[33mcommit 251174bfde35f2d5af6527d1bdf5d994e619497e[m
+Author: Alex <ilson.alex@gmail.com>
+Date:   Thu Dec 21 19:03:52 2023 -0800
+
+    Added template files
+
+[33mcommit 83a7d2e5acd5d1eb71090c4c7ede8e63db4925b7[m
+Author: Alex <ilson.alex@gmail.com>
+Date:   Thu Dec 21 17:49:09 2023 -0800
+
+    Added README.md and .gitignore

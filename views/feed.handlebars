@@ -1,15 +1,26 @@
 <body>
     <div class="container mt-4">
-        <h1 class="text-center mb-4">Followed Repos</h1>
+        <h1 class="text-right-mb-4">Followed Repos</h1>
         <div class="row">
+              <div class="col-md-3">
+                <div class="list-group">
+                    <a href="/dashboard" class="btn btn-primary">Bounty Board</a>
+                    <a href="/feed" class="btn btn-primary">Bug Feed</a>
+                    <a href="/reposearch" class="btn btn-primary">Search Repos</a>
+                    <a href="/bugs" class="btn btn-primary">Most Wanted</a>
+                </div>
+            </div>
+            <div class="bg"></div>
+            <div class="bg bg2"></div>
+            <div class="bg bg3"></div>
             <!-- Side Panel -->
-            {{> sidebar}}
+            {{ sidebar}}
             <!-- Main Content -->
             <div class="col-md-9">
                 <!-- Cards for Issues -->
                 <div class="card-container">
                     {{#each repos as |repo|}}
-                    <div class="card mb-3">
+                    <div class="card mb-3 custom-card">
                         <div class="card-body">
                             <h5 class="card-title">{{repo.repo_name}}</h5>
                             <p class="card-text">{{repo.repo_url}}</p>

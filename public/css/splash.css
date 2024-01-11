@@ -4,8 +4,8 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
-    background-image: repeating-radial-gradient( yellow , red); 
 }
+
 .bg {
     animation:slide 3s ease-in-out infinite alternate;
     background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
@@ -72,9 +72,10 @@ body {
 }
 
 .description {
-    font-size: 20px;
+    font-size: 40px;
     color: black;
     margin-bottom: 30px;
+    text-shadow: 2px 2px 4px white;
 }
 
 *, *::before, *::after {
@@ -93,7 +94,7 @@ button {
     outline: none;
     position: relative;
     cursor: pointer;
-    border: 2px black;
+    border: solid 3px black;
 
     --background-color: blue;
     --border-size: 2px;

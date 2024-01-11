@@ -53,7 +53,7 @@ If you followed tutorials, include links to those here as well.
 Handlebars CSS
 CITE: https://www.youtube.com/watch?v=o4njTeKjGWQ
 CITE: https://fonts.google.com/specimen/JetBrains+Mono?preview.text=Bug%20Bounty%20Brokers&classification=Monospace 
-
+CITE: https://www.sliderrevolution.com/resources/css-animated-background/
 
 ## License
 This app is licensed under the WTFPL license. Information on the license can be found online at http://www.wtfpl.net/about/ or by clicking the badge above.
