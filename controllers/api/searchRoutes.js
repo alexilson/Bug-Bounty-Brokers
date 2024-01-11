@@ -9,7 +9,7 @@ const octokit = new Octokit({
 router.post('/', async (req, res) => {
     let returnedRepos = [];
     const query = req.body.searchTerm;
-    console.log(query);
+
     try {
         const response = await octokit.request("GET /search/repositories", {
           q: query,
@@ -38,8 +38,6 @@ router.post('/', async (req, res) => {
             // Return the repositories as a response
             res.json({ repositories: returnedRepos });
         })
-
-        console.log(req.session.repos);
    
     } catch (error) {
         console.error(error);
@@ -56,19 +54,12 @@ router.post('/issues', async (req, res) => {
     const repo = req.body.repoName;
     const url = req.body.url;
     
-    console.log(owner);
-    console.log(repo);
-    console.log(url);
-    
     try {
         const response = await octokit.request(`GET /repos/${owner}/${repo}/issues`);
     
         // Extract the list of repositories from the response
         const issues = response.data;
-        
-        // check bounty table 
-
-
+      
         // Loop through the repositories and display their information
         issues.forEach(issue => {
           returnedIssues.push({
@@ -90,8 +81,6 @@ router.post('/issues', async (req, res) => {
             res.json({ issues: returnedIssues });
         })
 
-        console.log(req.session.issues);
-   
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal server error' });
@@ -102,7 +91,7 @@ router.post('/issues', async (req, res) => {
 router.post('/clear', async (req, res) => {
   delete req.session.repos;
   delete req.session.issues;
-  await req.session.save(); // You can use async/await for session saving
+  await req.session.save(); 
   res.json({ message: 'Repository data removed' });
 });
 

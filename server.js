@@ -1,3 +1,4 @@
+// import modules
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
@@ -13,9 +14,15 @@ const PORT = process.env.PORT || 3001;
 
 const hbs = exphbs.create({});
 
+// set up session
 const sess = {
-  secret: 'Super secret secret',
-  cookie: {},
+  secret: process.env.SESSION_SECRET,
+  cookie: {
+    maxAge: 60 * 60 *1000, // one hour session timing
+    httpOnly:true,
+    secure: false,
+    sameSite: 'strict'
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({

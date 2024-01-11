@@ -14,7 +14,6 @@ Bugs.belongsTo(Repos, {
   foreignKey: 'repo_id'
 });
 
-
 // FollowedRepos belongs to Users
 Repos.belongsToMany(Users, {
   through: FollowedRepos
@@ -23,7 +22,6 @@ Repos.belongsToMany(Users, {
 Users.belongsToMany(Repos, {
   through: FollowedRepos
 });
-
 
 // Each bounty has one bug
 Bounties.belongsTo(Bugs, {
