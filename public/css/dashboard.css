@@ -4,25 +4,58 @@ body {
   
 }
 
+.custom-card{
+  background-color: rgba(0, 128, 255, 0.986);
+ 
+}
+.card-text{
+  font-weight: bolder;
+  color: black;
+  font-size: 20px;
+}
+
+.card-body a {
+  color: blue; 
+}
+
+.custom-card p {
+  /* You can customize the font style for paragraphs within the custom card */
+  font-style: sans-serif;
+}
+
+#search-button {
+  border-radius: 10px; 
+}
+
+.text-right-mb-4{
+  color: black;
+  font-size: 65px;  
+  height: 25vh;
+  margin: 35;
+  margin-bottom: 10px;
+  text-shadow: 3px 3px 5px white;
+}
+
+.col-md-9{
+  align-items: center;
+}
 
 .container {
   margin-top: 5rem;
   text-align: center;
+  
 }
-
 
 .form {
   max-width: 400px;
   margin: 0 auto;
 }
 
-
 .form label {
   display: block;
   margin-bottom: 0.5rem;
   text-align: left;
 }
-
 
 .form input {
   width: 100%;
@@ -31,9 +64,13 @@ body {
   box-sizing: border-box;
 }
 
-
 .password-toggle {
   cursor: pointer;
+}
+
+.btn.btn-primary{
+  border: solid 2px black;
+  color: white;
 }
 
 .bg {
@@ -59,9 +96,8 @@ body {
 
 .content {
   background-color:rgba(255,255,255,.8);
-  border-radius:.25em;
+  border-radius:5px;
   box-shadow:0 0 .25em rgba(0,0,0,.25);
-  box-sizing:border-box;
   left:50%;
   padding:10vmin;
   position:fixed;
@@ -87,11 +123,9 @@ h1 {
   box-sizing: border-box;
 }
 
-
 button {
   margin: 1rem;
 }
-
 
 .btn {
   background-color: var(--background-color);
@@ -101,14 +135,12 @@ button {
   outline: none;
   position: relative;
   cursor: pointer;
-  border: 2px black;
-
+  border: 5px black;
 
   --background-color: blue;
   --border-size: 2px;
   --accent-color: #0AF;
 }
-
 
 .btn.btn-primary::before {
   content: '';
@@ -121,31 +153,22 @@ button {
   z-index: -1;
   background-image: linear-gradient(to right ,#00aeff,yellow);
 
-
-
-
   transition: transform 300ms ease-in-out;
   transform: scaleX(0);
   transform-origin: left;
 }
-
 
 .btn.btn-primary:hover::before,
 .btn.btn-primary:focus::before {
   transform: scaleX(1);
 }
 
-
 .btn.btn-primary{
   transition: color 300 ms ease-in-out;
   z-index: 1;
 }
 
-
 .btn.btn-primary:hover,
 .btn.btn-primary:focus {
-  color: white;
+  color: black;
 }
-
-
-

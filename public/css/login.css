@@ -1,16 +1,22 @@
 body {
     font-family: 'JetBrains Mono', monospace;
-    background-image: linear-gradient(to right, yellow , red);
     color: black;
+}
+
+h2 {
+    font-size: 65px; /* Adjust the font-size value as needed */
 }
 
 .container {
     margin-top: 5rem;
     text-align: center;
+    text-shadow: 3px 3px 5px white;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .form {
-    max-width: 400px;
+    max-width: 90%;
     margin: 0 auto;
 }
 
@@ -88,6 +94,7 @@ h1 {
 
 button {
     margin: 1rem;
+    
 }
 
 .btn {
@@ -98,7 +105,7 @@ button {
     outline: none;
     position: relative;
     cursor: pointer;
-    border: 2px black;
+    border: solid 3px black;
     
 
 

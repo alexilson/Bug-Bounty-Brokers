@@ -79,7 +79,7 @@ If you followed tutorials, include links to those here as well.
 Handlebars CSS
 CITE: https://www.youtube.com/watch?v=o4njTeKjGWQ
 CITE: https://fonts.google.com/specimen/JetBrains+Mono?preview.text=Bug%20Bounty%20Brokers&classification=Monospace 
-
+CITE: https://www.sliderrevolution.com/resources/css-animated-background/
 
 ## License
 [![License](https://img.shields.io/badge/License-WTFPL-brightgreen.svg)](http://www.wtfpl.net/about/)
