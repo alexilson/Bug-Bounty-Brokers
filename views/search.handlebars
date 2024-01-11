@@ -1,15 +1,18 @@
 <body>
     <div class="container mt-4">
-        <h1 class="text-center mb-4">Search Page</h1>
+        <h1 class="text-right-mb-4">Search Page</h1>
         <div class="row">
-            <!-- Side Panel -->
+        <!-- Side Panel -->
             {{> sidebar}}
-
+            <div class="bg"></div>
+            <div class="bg bg2"></div>
+            <div class="bg bg3"></div>
+        
             <!-- Main Content -->
             <div class="col-md-9">
                 <!-- Search Bar Form -->
-                <form id="search-form">
-                    <div class="input-group mb-3">
+                 <form id="search-form">
+                    <div class="input-group mb-3" style="align-items: baseline;">
                         <input id="search" type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="submit" id="search-button">Search</button>
@@ -21,7 +24,7 @@
                 <div class="result-container">
                     <!-- Result Card 1 -->
                     {{#each repositories as |repository|}}
-                        <div class="card mb-3">
+                        <div class="card mb-3 custom-card">
                             <div class="card-body">
                                 <h5 class="card-title row">
                                     <div class="col repo-name">Repo Name: {{repository.name}}</div>

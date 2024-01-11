@@ -2,51 +2,52 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
 <body>
-    <div class="bg"></div>
-    <div class="bg bg2"></div>
-    <div class="bg bg3"></div>
-    <div class="container mt-5">
-        <h2>Sign Up</h2>
-        <form class="form signup-form">
-            <div class="form-group">
-                <label for="email-signup">Email:</label>
-                <input class="form-control" type="email" id="email-signup" required>
-            </div>
-            <div class="form-group">
-                <label for="github-username-signup">Username:</label>
-                <input class="form-control" type="text" id="username-signup" required>
-            </div>
-            <div class="form-group">
-                <label for="password-signup">Password (minimum 8 characters):</label>
-                <div class="input-group">
-                    <input class="form-control" type="password" id="password-signup" required>
-                    <div class="input-group-append">
-                        <span class="input-group-text password-toggle" onclick="togglePassword('password-signup')">
-                            <i class="far fa-eye"></i>
-                        </span>
-                    </div>
+<div class="container-mt-5 ">
+    <h2 class="text-center">Sign Up</h2>
+    <form class="form signup-form ">
+        <div class="form-group">
+            <label for="email-signup">Email:</label>
+            <input class="form-control" type="email" id="email-signup" required>
+        </div>
+        <div class="form-group">
+            <label for="github-username-signup">GitHub Username:</label>
+            <input class="form-control" type="text" id="github-username-signup" required>
+        </div>
+        <div class="form-group">
+            <label for="password-signup">Password:</label>
+            <div class="input-group">
+                <input class="form-control" type="password" id="password-signup" required>
+                <div class="input-group-append">
+                    <span class="input-group-text password-toggle" onclick="togglePassword('password-signup')">
+                        <i class="far fa-eye"></i>
+                    </span>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="confirm-password-signup">Confirm Password:</label>
-                <div class="input-group">
-                    <input class="form-control" type="password" id="confirm-password-signup" required>
-                    <div class="input-group-append">
-                        <span class="input-group-text password-toggle" onclick="togglePassword('confirm-password-signup')">
-                            <i class="far fa-eye"></i>
-                        </span>
-                    </div>
+        </div>
+        <div class="form-group">
+            <label for="confirm-password-signup">Confirm Password:</label>
+            <div class="input-group">
+                <input class="form-control" type="password" id="confirm-password-signup" required>
+                <div class="input-group-append">
+                    <span class="input-group-text password-toggle" onclick="togglePassword('confirm-password-signup')">
+                        <i class="far fa-eye"></i>
+                    </span>
                 </div>
             </div>
-            <div class="form-group">
-                <button class="btn btn-primary" type="submit">Sign Up</button>
-            </div>
-        </form>
-        <p>Already have an account? Click <a href="/login">here</a> to log in.</p>
-    </div>
+        </div>
+        <div class="form-group text-center">
+            <button class="btn btn-primary" type="submit">Sign Up</button>
+            <p>Already have an account? Click <a href="/login">here</a> to log in.</p>
+        </div>
+        <div class="bg"></div>
+        <div class="bg bg2"></div>
+        <div class="bg bg3"></div>
+
+  
+  
+    <!-- signup js -->
     
-    <!-- Signup JavaScript -->
-    <script src="js/signup.js"></script>
+    <script src="../public/js/signup.js"></script>
     <script>
         function togglePassword(inputId) {
             const passwordInput = document.getElementById(inputId);

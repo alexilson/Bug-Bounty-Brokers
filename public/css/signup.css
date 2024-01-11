@@ -1,22 +1,31 @@
-html {
-    height:100%;
-  }
-  
-  body {
-    margin:0;
-  }
-  
-  .bg {
-    animation:slide 3s ease-in-out infinite alternate;
-    background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
-    bottom:0;
-    left:-50%;
-    opacity:.5;
-    position:fixed;
-    right:-50%;
-    top:0;
-    z-index:-1;
-  }
+body {
+    margin:50px;
+}
+
+label{
+  font-size: 20px;
+}
+h2{
+    font-size: 75px;
+}
+
+.container-mt-5{
+  text-shadow: 3px 3px 5px white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.bg {
+  animation:slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
   
   .bg2 {
     animation-direction:alternate-reverse;
@@ -31,7 +40,7 @@ html {
     background-color:rgba(255,255,255,.8);
     border-radius:.25em;
     box-shadow:0 0 .25em rgba(0,0,0,.25);
-    box-sizing:border-box;
+    
     left:50%;
     padding:10vmin;
     position:fixed;
@@ -40,9 +49,7 @@ html {
     transform:translate(-50%, -50%);
   }
   
-  h1 {
-    font-family:monospace;
-  }
+  
   
   @keyframes slide {
     0% {
@@ -56,12 +63,6 @@ html {
     box-sizing: border-box;
 }
 
-
-button {
-    margin: 1rem;
-}
-
-
 .btn {
     background-color: var(--background-color);
     color: white;
@@ -70,9 +71,8 @@ button {
     outline: none;
     position: relative;
     cursor: pointer;
-    border: 2px black;
-
-
+    border:  solid 3px black;
+    
     --background-color: blue;
     --border-size: 2px;
     --accent-color: #0AF;
