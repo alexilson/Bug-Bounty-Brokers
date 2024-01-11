@@ -13,11 +13,10 @@ Join The Buggy Bandits in revolutionizing how bugs are tackled in the open-sourc
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributions](#contributions)
-- [Tests](#tests)
 - [Features](#features)
-- [Badges](#badges)
 - [Credits](#credits)
+- [License](#licence)
+- [Questions](#questions)
 
 ## Installation
 - Clone repository to the directory of your choice
@@ -31,15 +30,21 @@ Join The Buggy Bandits in revolutionizing how bugs are tackled in the open-sourc
 
 ## Usage
 
+![splash](../Bug-Bounty-Brokers/public/screnshots/splash.png)
+
 **Adding A Bounty**
 - Create an account
+![signup](../Bug-Bounty-Brokers/public/screnshots/signup.png)
 - Log in
 - Click "Search Repos"
 - Type in the name of the repo you would like to view
 - Find the repo in the search results and click the "See Issues" button
+![search](../Bug-Bounty-Brokers/public/screnshots/search.png)
 - Scroll through the issues and find one on which you'd like to place a bounty.
 - Enter a bounty amount into the Add Bounty field.
 - Click Create Bounty.
+
+![bounty](../Bug-Bounty-Brokers/public/screnshots/createBounty.png)
 
 **Viewing Top 10 Most Wanted**
 - Create an account
@@ -47,10 +52,15 @@ Join The Buggy Bandits in revolutionizing how bugs are tackled in the open-sourc
 - Click "Most Wanted"
 - You will be shown the top 10 highest bounties on the board.
 
+![wanted](../Bug-Bounty-Brokers/public/screnshots/mostWanted.png)
+
+
 **Viewing Bounties You've Placed**
 - Log In
 - Click "Bounty Board"
 - You will be shown only the bounties you've placed with the totals reflecting the amount you have placed on each bug.
+
+![My Bounty](../Bug-Bounty-Brokers/public/screnshots/myBounty.png)
 
 
 ## Features
@@ -64,22 +74,21 @@ Join The Buggy Bandits in revolutionizing how bugs are tackled in the open-sourc
 
 - Top 10 Most Wanted Bounties: Explore the most critical and sought-after issues across various repositories on our platform. The Top 10 Most Wanted Bounties page showcases the bugs that need immediate attention, encouraging users to contribute to resolving high-priority issues.
 
-
-## Badges
-![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
-Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-
 ## Credits
-List your collaborators, if any, with links to their GitHub profiles.
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-If you followed tutorials, include links to those here as well.
 
-<CITATIONS>
+Multiple CSS Files with Express Handlebars. YouTube. https://www.youtube.com/watch?v=o4njTeKjGWQ.
+Google Fonts Webpage: Author. (Year, Month Day). Title. Google Fonts. URL.
 
-Handlebars CSS
-CITE: https://www.youtube.com/watch?v=o4njTeKjGWQ
-CITE: https://fonts.google.com/specimen/JetBrains+Mono?preview.text=Bug%20Bounty%20Brokers&classification=Monospace 
-CITE: https://www.sliderrevolution.com/resources/css-animated-background/
+Google Fonts. https://fonts.google.com/specimen/JetBrains+Mono?preview.text=Bug%20Bounty%20Brokers&classification=Monospace.
+
+Slider Revolution. https://www.sliderrevolution.com/resources/css-animated-background/.
+
+Sequelize Documentation. (n.d.). https://sequelize.org/docs/v6/getting-started/.
+
+Bootstrap Documentation. (n.d.). https://getbootstrap.com/docs/5.3/getting-started/introduction/.
+
+Handlebars.js Documentation. (n.d.). https://handlebarsjs.com/guide/builtin-helpers.html#built-in-helpers.
+
 
 ## License
 [![License](https://img.shields.io/badge/License-WTFPL-brightgreen.svg)](http://www.wtfpl.net/about/)
