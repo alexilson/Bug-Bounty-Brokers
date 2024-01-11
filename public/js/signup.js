@@ -4,7 +4,7 @@ const signupFormHandler = async (event) => {
     console.log("attemping to create new user");
   
     const email = document.querySelector('#email-signup').value.trim();
-    const username = document.querySelector('#username-signup').value.trim();
+    const username = document.querySelector('#github-username-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
   
     if (username && email && password) {
