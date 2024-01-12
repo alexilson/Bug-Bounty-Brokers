@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
         const response = await octokit.request("GET /search/repositories", {
           q: query,
           page: 1, // Replace with the desired page number
-          per_page: 10, // Replace with the desired number of results per page
+          per_page: 200, // Replace with the desired number of results per page
           sort: "stars", // Replace with your preferred sorting criteria
           order: "desc" // Replace with "asc" for ascending order or "desc" for descending order
         });
